@@ -36,23 +36,23 @@ College ERP using MERN Stack
 # Preview
 
 Admin
-<video width="320" height="240" controls>
 
-  <source src="Admin.mp4" type="video/mp4">
-</video>
+https://user-images.githubusercontent.com/90241373/156794210-af4db587-1aba-4289-9196-07f2e179d9bb.mp4
+
+
 
 <br>
 
 Faculty
-<video width="320" height="240" controls>
 
-  <source src="Faculty.mp4" type="video/mp4">
-</video>
+https://user-images.githubusercontent.com/90241373/156794428-1a73579c-8116-45dd-bee4-140f3b6de2c8.mp4
+
+
 
 <br>
 
 Student
-<video width="320" height="240" controls>
 
-  <source src="Student.mp4" type="video/mp4">
-</video>
+https://user-images.githubusercontent.com/90241373/156794474-1ba1d10e-30c8-4ce7-881b-520d7ab6aec6.mp4
+
+
