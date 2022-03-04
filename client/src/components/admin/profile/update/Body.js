@@ -48,9 +48,8 @@ const Body = () => {
       setLoading(false);
     } else {
       dispatch(updateAdmin(value, navigate));
-      dispatch({ type: "LOGOUT" });
+
       alert("Kindly login again to see updates");
-      navigate("/login/adminlogin");
     }
   };
 

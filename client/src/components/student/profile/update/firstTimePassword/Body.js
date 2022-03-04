@@ -114,10 +114,8 @@ const Body = () => {
             messageColor="#blue"
           />
         )}
-        {(error.mismatchError || error.backendError) && (
-          <p className="text-red-500">
-            {error.mismatchError || error.backendError}
-          </p>
+        {error.mismatchError && (
+          <p className="text-red-500">{error.mismatchError}</p>
         )}
       </form>
     </div>

@@ -61,9 +61,9 @@ const Body = () => {
                   messageColor="blue"
                 />
               )}
-              {(error.noSubjectError || error.backendError) && (
+              {error.noSubjectError && (
                 <p className="text-red-500 text-2xl font-bold">
-                  {error.noSubjectError || error.backendError}
+                  {error.noSubjectError}
                 </p>
               )}
             </div>

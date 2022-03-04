@@ -66,9 +66,7 @@ export const updatedPassword = async (req, res) => {
       response: student,
     });
   } catch (error) {
-    const errors = { backendError: String };
-    errors.backendError = error;
-    res.status(500).json(errors);
+    res.status(500).json(error);
   }
 };
 
@@ -135,9 +133,7 @@ export const updateStudent = async (req, res) => {
     }
     res.status(200).json(updatedStudent);
   } catch (error) {
-    const errors = { backendError: String };
-    errors.backendError = error;
-    res.status(500).json(errors);
+    res.status(500).json(error);
   }
 };
 
@@ -174,9 +170,7 @@ export const testResult = async (req, res) => {
 
     res.status(200).json({ result });
   } catch (error) {
-    const errors = { backendError: String };
-    errors.backendError = error;
-    res.status(500).json(errors);
+    res.status(500).json(error);
   }
 };
 
@@ -185,38 +179,29 @@ export const attendance = async (req, res) => {
     const { department, year, section } = req.body;
     const errors = { notestError: String };
     const student = await Student.findOne({ department, year, section });
-    var result = [];
-    var sub = student.subjects;
-    for (var i = 0; i < sub.length; i++) {
-      var subId = sub[i];
 
-      var subject = await Subject.findById(subId);
-      var subjectCode = subject.subjectCode;
-      var attendance = await Attendence.findOne({
-        student: student._id,
-        subject: sub[i]._id,
-      });
-      var percentage =
-        (attendance.lectureAttended / attendance.totalLecturesByFaculty) * 100;
-      percentage = percentage.toFixed(2);
-
-      if (attendance) {
-        var temp = {
-          attended: attendance.lectureAttended,
-          total: attendance.totalLecturesByFaculty,
-          subjectName: subject.subjectName,
-          subjectCode,
-          percentage,
-        };
-
-        result.push(temp);
-      }
+    const attendence = await Attendence.find({
+      student: student._id,
+    }).populate("subject");
+    if (!attendence) {
+      res.status(400).json({ message: "Attendence not found" });
     }
 
-    res.status(200).json({ result });
+    res.status(200).json({
+      result: attendence.map((att) => {
+        let res = {};
+        res.percentage = (
+          (att.lectureAttended / att.totalLecturesByFaculty) *
+          100
+        ).toFixed(2);
+        res.subjectCode = att.subject.subjectCode;
+        res.subjectName = att.subject.subjectName;
+        res.attended = att.lectureAttended;
+        res.total = att.totalLecturesByFaculty;
+        return res;
+      }),
+    });
   } catch (error) {
-    const errors = { backendError: String };
-    errors.backendError = error;
-    res.status(500).json(errors);
+    res.status(500).json(error);
   }
 };

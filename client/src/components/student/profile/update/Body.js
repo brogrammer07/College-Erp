@@ -279,9 +279,6 @@ const Body = () => {
                   messageColor="blue"
                 />
               )}
-              {error.backendError && (
-                <p className="text-red-500">{error.backendError}</p>
-              )}
             </div>
           </form>
         </div>

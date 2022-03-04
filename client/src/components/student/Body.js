@@ -19,6 +19,7 @@ const Body = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const subjects = useSelector((state) => state.admin.subjects.result);
   var totalAttendance = 0;
+  console.log(attendance);
 
   attendance?.map((att) => (totalAttendance += att.attended));
 

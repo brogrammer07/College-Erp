@@ -17,6 +17,7 @@ const Body = () => {
 
   const [search, setSearch] = useState(false);
 
+  console.log(error);
   useEffect(() => {
     if (Object.keys(store.errors).length !== 0) {
       setError(store.errors);
@@ -53,9 +54,9 @@ const Body = () => {
                   messageColor="blue"
                 />
               )}
-              {(error.noSubjectError || error.backendError) && (
+              {error.noSubjectError && (
                 <p className="text-red-500 text-2xl font-bold">
-                  {error.noSubjectError || error.backendError}
+                  {error.noSubjectError}
                 </p>
               )}
             </div>
