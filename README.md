@@ -25,7 +25,8 @@ College ERP using MERN Stack
 9. Faculty can create new test, mark attendance or students and also upload marks of created tests
 10. Student can Update profile details, password in profile section
 11. Student can check their attendance, marks and subject list
-12. Modern UI
+12. Error display feature available with form validation
+14. Modern UI
 
 # Features to be added later in the future
 
