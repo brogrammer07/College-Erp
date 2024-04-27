@@ -158,6 +158,30 @@ export const addAdmin = async (req, res) => {
     res.status(500).json(errors);
   }
 };
+export const addDummyAdmin = async () => {
+  const email = "dummy@gmail.com";
+  const password = "123";
+  const name = "dummy";
+  const username = "ADMDUMMY";
+  let hashedPassword;
+  hashedPassword = await bcrypt.hash(password, 10);
+  var passwordUpdated = true;
+
+  const dummyAdmin = await Admin.findOne({ email });
+
+  if (!dummyAdmin) {
+    await Admin.create({
+      name,
+      email,
+      password: hashedPassword,
+      username,
+      passwordUpdated,
+    });
+    console.log("Dummy user added.");
+  } else {
+    console.log("Dummy user already exists.");
+  }
+};
 
 export const createNotice = async (req, res) => {
   try {
@@ -409,7 +433,7 @@ export const deleteAdmin = async (req, res) => {
     const errors = { noAdminError: String };
     for (var i = 0; i < admins.length; i++) {
       var admin = admins[i];
-   
+
       await Admin.findOneAndDelete({ _id: admin });
     }
     res.status(200).json({ message: "Admin Deleted" });
@@ -425,7 +449,7 @@ export const deleteFaculty = async (req, res) => {
     const errors = { noFacultyError: String };
     for (var i = 0; i < faculties.length; i++) {
       var faculty = faculties[i];
- 
+
       await Faculty.findOneAndDelete({ _id: faculty });
     }
     res.status(200).json({ message: "Faculty Deleted" });
@@ -441,7 +465,7 @@ export const deleteStudent = async (req, res) => {
     const errors = { noStudentError: String };
     for (var i = 0; i < students.length; i++) {
       var student = students[i];
-   
+
       await Student.findOneAndDelete({ _id: student });
     }
     res.status(200).json({ message: "Student Deleted" });
