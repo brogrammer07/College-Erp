@@ -2,6 +2,16 @@
 
 College ERP using MERN Stack
 
+# Setup
+1. Create a .env file in server folder.
+2. Copy the content of .env.example to the newly created .env file
+3. Change the MONGODB_URI to your MongoDB atlas URI
+4. Open a terminal in client folder and run "npm run start"
+5. Open another terminal in server folder and run "npm run start"
+6. Go to "localhost:3000/login/adminlogin"
+7. After successfully running the server, a dummy admin should be created.
+8. Dummy admin username = ADMDUMMY, password = 123
+
 # TechStack
 
 1. Reactjs
